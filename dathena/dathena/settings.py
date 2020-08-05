@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'quickstart.apps.QuickstartConfig',
     'rest_framework',
 ]
+CELERY_BROKER_URL = 'amqp://localhost'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

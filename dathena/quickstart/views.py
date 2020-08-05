@@ -16,6 +16,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from rest_framework.parsers import FileUploadParser
 from .models import File_Meta
+from django.core import serializers
+import re
+from django.db import models
+from .task import *
 
 
 # Get the JWT settings, add these lines after the import/from lines
@@ -111,10 +115,38 @@ class FileUploadView(APIView):
 
 class ListFile(APIView):
     #list all the files in the database
-    permission_classes = (permissions.IsAuthenticated,)
+    #permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     def get(self,request):
-        queryset = File_Meta.objects.all()
-        serializer_class = FileMetaSerializer
-        return Response(serializer_class.data, status=status.HTTP_201_CREATED)
+        files_list = []
+        querysets = File_Meta.objects.all()
+        for queryset in querysets:
+            file_dict = {}
+            file_dict["pk"] = queryset.pk
+            file_dict["file_name"] = queryset.file.name
+            file_dict["file_size"] = queryset.file.size
+            file_dict["file_path"] = queryset.file.path
+            file_dict["score"] = str(queryset.score)
+            file_dict["timestamp"] = str(queryset.timestamp)
+            files_list.append(file_dict)
+
+        #data = serializers.serialize('json', queryset)
+        return Response(files_list, status=status.HTTP_201_CREATED)
+
+# class ListFile(APIView):
+#     #list all the files in the database
+#     permission_classes = (permissions.IsAuthenticated,)
+#     def get(self,request):
+#         queryset = File_Meta.objects.all()
+#         serializer_class = FileMetaSerializer
+#         data = serializers.serialize('json', queryset)
+#         return Response(data, status=status.HTTP_201_CREATED)
         #token authentication
         
+class updateScore(generics.CreateAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    def get(self,request):
+        permission_classes = (permissions.AllowAny,)
+        updateScoreTask.delay()
+        return Response("Update Complete", status=status.HTTP_201_CREATED)
+
