@@ -34,4 +34,5 @@ class TokenSerializer(serializers.Serializer):
 class FileMetaSerializer(serializers.ModelSerializer):
     class Meta:
         model = File_Meta
-        fields = ("file","score")
+        fields = ("score")
+        #fields = ("__all__")

@@ -15,6 +15,7 @@ from rest_framework import generics
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from rest_framework.parsers import FileUploadParser
+from .models import File_Meta
 
 
 # Get the JWT settings, add these lines after the import/from lines
@@ -100,7 +101,7 @@ class FileUploadView(APIView):
 
     def post(self, request, *args, **kwargs):
 
-      file_serializer = FileSerializer(data=request.data)
+      file_serializer = FileMetaSerializer(data=request.data)
 
       if file_serializer.is_valid():
           file_serializer.save()
@@ -110,8 +111,10 @@ class FileUploadView(APIView):
 
 class ListFile(APIView):
     #list all the files in the database
+    permission_classes = (permissions.IsAuthenticated,)
     def get(self,request):
         queryset = File_Meta.objects.all()
         serializer_class = FileMetaSerializer
+        return Response(serializer_class.data, status=status.HTTP_201_CREATED)
         #token authentication
-        permission_classes = (permissions.IsAuthenticated,)
+        
