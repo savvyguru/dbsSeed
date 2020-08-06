@@ -25,6 +25,7 @@ Use my crendentials or yours if you prefer
 Username : richard
 Password : Learning1
 get access token
+![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.04.06%20AM.png)
 
 ## Upload File
 http://127.0.0.1:8000/upload/
@@ -36,13 +37,15 @@ Authorization:
 Type = Bearer Token
 Insert you JWT token
 return : status 201 and your file information
-
+![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.06.10%20AM.png)
+  
 ## List Files
 http://127.0.0.1:8000/listfile/
 Authorization:
 Type = Bearer Token
 Insert you JWT token
 return : status 201 and list of database in serialized form
+![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.05.10%20AM.png)
 
 # Celery Application
 ```
