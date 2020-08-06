@@ -19,6 +19,8 @@ $pip3 install -r requirements.txt
 **password :** <insert your password> <br/>
 *password is encrypted <br/>
 * **return :** status 201 and your username and email <br/>
+* As you can see the password of users are encrypted as hash <br/>
+![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.51.13%20AM.png)
 
 
 ## Token Authentication
