@@ -31,13 +31,16 @@ get access token
 http://127.0.0.1:8000/upload/
 Meta information of file is stored in custom model File_Meta
 Using Postman, enter the following key-value fields:
-file : <insert your file.txt>
+file : next_client.txt <insert your file.txt>
 *file type must be.txt else return : status 400 bad request
 Authorization:
 Type = Bearer Token
 Insert you JWT token
 return : status 201 and your file information
-![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.06.10%20AM.png)
+Take note that the sensitivity score is null when you first upload
+![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.17.24%20AM.png)
+![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.18.42%20AM.png)
+
   
 ## List Files
 http://127.0.0.1:8000/listfile/
@@ -62,4 +65,6 @@ $celery -A quickstart worker -B -Q celery -l info
 Celery worker runs every periodically (every 5 seconds) and updates the sensitivity score of the files 
 ![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%209.49.19%20AM.png)
 ![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%209.50.05%20AM.png)
+Take note that the sensitivity score of next_client.txt got updated by celery app
+![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.19.26%20AM.png)
 
