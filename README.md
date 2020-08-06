@@ -57,4 +57,6 @@ cd back to your django directory and start celery:
 $celery -A quickstart worker -B -Q celery -l info
 ```
 Celery worker runs every periodically (every 5 seconds) and updates the sensitivity score of the files 
+![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%209.49.19%20AM.png)
+![alt text](http://url/to/img.png)
 
