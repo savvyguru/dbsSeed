@@ -12,6 +12,10 @@ $pip3 install -r requirements.txt
 $cd dathena
 $python manage.py runserver
 ```
+## Install RabbitMQ
+```
+$Brew install rabbitmq
+```
 
 ## User Registration
 * **Endpoint:** http://127.0.0.1:8000/auth/register/ <br/>
