@@ -2,13 +2,15 @@
 * **Python Web Framework**: Django Rest Framework
 * **RDBMS** : Postgres
 
-## Installation steps
+## Set Up 
 ```
-$mkdir dathena
+$git clone https://github.com/savvyguru/dathena.git
 $cd dathena
 $python3 -m venv env
 $source env/bin/activate
 $pip3 install -r requirements.txt
+$cd dathena
+$python manage.py runserver
 ```
 
 ## User Registration
