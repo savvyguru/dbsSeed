@@ -115,8 +115,8 @@ class FileUploadView(APIView):
 
 class ListFile(APIView):
     #list all the files in the database
-    #permission_classes = (permissions.IsAuthenticated,)
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
+    #permission_classes = (permissions.AllowAny,)
     def get(self,request):
         files_list = []
         querysets = File_Meta.objects.all()
