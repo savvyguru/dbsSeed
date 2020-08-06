@@ -1,4 +1,6 @@
-# Dathena REST 
+# Dathena Submission
+* **Python Web Framework**: Django Rest Framework
+* **RDBMS** : Postgres
 
 ## Installation steps
 ```
