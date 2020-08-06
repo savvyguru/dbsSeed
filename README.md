@@ -41,6 +41,7 @@ Type = Bearer Token <br/>
 Insert you JWT token <br/>
 * return : status 201 and your file information <br/>
 Take note that the sensitivity score is null when you first upload <br/>
+  
 ![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.17.24%20AM.png)
 ![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.18.42%20AM.png)
 
@@ -65,9 +66,12 @@ Login details: guest:guest <br/>
 ```
 $celery -A quickstart worker -B -Q celery -l info
 ```
-* Celery worker runs every periodically (every 5 seconds) and updates the sensitivity score of the files 
+* Celery worker runs every periodically (every 5 seconds) and updates the sensitivity score of the files
+
 ![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%209.49.19%20AM.png)
 ![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%209.50.05%20AM.png)
+
 Take note that the sensitivity score of next_client.txt got updated by celery app
+
 ![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.19.26%20AM.png)
 
