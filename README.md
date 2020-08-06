@@ -47,6 +47,8 @@ Take note that the sensitivity score is null when you first upload <br/>
 ![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.17.24%20AM.png)
 ![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.18.42%20AM.png)
 
+* When you try to upload file type that is not .txt, you get an error notification that says unsupported file type <br/>
+![alt text](https://github.com/savvyguru/dathena/blob/master/media/Screenshot%202020-08-06%20at%2010.57.52%20AM.png)
   
 ## List Files
 * **Endpoint :** http://127.0.0.1:8000/listfile/
