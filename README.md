@@ -73,7 +73,7 @@ $brew services start rabbitmq
 ```
 * **Go to :** http://localhost:15672/#/ <br/>
 Login details: guest:guest <br/>
-* cd back to your django directory and start celery: <br/>
+* cd back to your django app directory(quickstart) and start celery: <br/>
 ```
 $celery -A quickstart worker -B -Q celery -l info
 ```
