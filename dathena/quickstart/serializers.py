@@ -3,6 +3,17 @@ from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
 from .models import File_Meta
 from django.contrib.auth.hashers import make_password
+from .validators import validate_image_extension
+
+from django.db import models
+from .validators import validate_file_extension
+from django.core.validators import RegexValidator
+from django.core.validators import MinValueValidator
+from .validators import validate_image_extension
+
+from django.core.validators import RegexValidator,MinValueValidator
+checkAlpha = RegexValidator(r'^[a-zA-Z]*$', 'Only alphabet characters are allowed.')
+checkNRIC = RegexValidator(r'^[0-9A-Z]*$', 'Only NRIC characters are allowed.')
 
 class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(
@@ -36,3 +47,5 @@ class FileMetaSerializer(serializers.ModelSerializer):
         model = File_Meta
         #fields = ("score")
         fields = ("__all__")
+
+

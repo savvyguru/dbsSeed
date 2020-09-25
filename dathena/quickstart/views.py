@@ -53,7 +53,7 @@ class RegisterUsers(generics.CreateAPIView):
 
 class LoginView(generics.CreateAPIView):
     """
-    POST auth/login/
+    POST login
     """
     # This permission class will overide the global permission
     # class setting
@@ -79,25 +79,19 @@ class LoginView(generics.CreateAPIView):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
-# class UploadFile(APIView):
-#     #check if file is .txt
-#     def validate_file_extension(value):
-#         if not value.name.endswith('.txt'):
-#             raise ValidationError(u'Error message')
+class validateFormView(APIView):
+    #token authentication
+    permission_classes = (permissions.IsAuthenticated,)
+    parser_class = (FileUploadParser,)
 
-#     #token authentication
-#     permission_classes = (permissions.IsAuthenticated,)
-#     parser_class = (FileUploadParser,)
+    def post(self, request, *args, **kwargs):
+        valForm = CustomerDataSerializer(data=request.data)
 
-#     def post(self, request, *args, **kwargs):
-
-#       file_serializer = FileMetaSerializer(data=request.data)
-
-#       if file_serializer.is_valid():
-#           file_serializer.save()
-#           return Response(file_serializer.data, status=status.HTTP_201_CREATED)
-#       else:
-#           return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if valForm.is_valid():
+            valForm.save()
+            return Response(valForm.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(valForm.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class FileUploadView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
@@ -132,16 +126,6 @@ class ListFile(APIView):
 
         #data = serializers.serialize('json', queryset)
         return Response(files_list, status=status.HTTP_201_CREATED)
-
-# class ListFile(APIView):
-#     #list all the files in the database
-#     permission_classes = (permissions.IsAuthenticated,)
-#     def get(self,request):
-#         queryset = File_Meta.objects.all()
-#         serializer_class = FileMetaSerializer
-#         data = serializers.serialize('json', queryset)
-#         return Response(data, status=status.HTTP_201_CREATED)
-        #token authentication
         
 class updateScore(generics.CreateAPIView):
     permission_classes = (permissions.IsAuthenticated,)
